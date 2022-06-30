@@ -4,6 +4,15 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const esLintPlugin = (isDev) => isDev ? [] : [ new ESLintPlugin({ extensions: ['ts', 'js'] }) ];
+const devServer = (isDev) => !isDev ? {} : {
+    devServer: {
+        open: true,
+        hot: true,
+        port: 8080,
+        contentBase: "./dist",
+        inline: false,
+    },
+};
 
 
 module.exports = ({ development }) => ({
@@ -55,5 +64,6 @@ module.exports = ({ development }) => ({
         }),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
         ...esLintPlugin(development),
-    ]
+    ],
+    ...devServer(development)
 });
