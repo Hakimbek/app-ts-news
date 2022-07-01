@@ -5,10 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch",
-    "dev": "webpack serve",
-    "lint": "eslint src",
-    "start": "node server.js"
+    "start": "webpack serve --env development",
+    "lint": "eslint src"
   },
   "keywords": [],
   "author": "",
