@@ -9,7 +9,7 @@ newsView();
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem('type') === 'sources') {
-    let data = JSON.parse((localStorage.getItem('data') as string)) as Array<Source>;
+    const data = JSON.parse((localStorage.getItem('data') as string)) as Array<Source>;
     const content = document.querySelector('.content') as HTMLElement;
     content.innerHTML = '';
     content.innerHTML = `<table class="table mb-5">
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Description</th>
+                                        <th class="description">Description</th>
                                         <th>Url</th>
                                     </tr>
                                 </thead>
@@ -31,14 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
       table.innerHTML = table.innerHTML + `<tr>
                                                     <th>${index + 1}</th>
                                                     <td>${value.name}</td>
-                                                    <td>${value.description}</td>
+                                                    <td class="description">${value.description}</td>
                                                     <td><a href=${value.url} target="_blank">Url</a></td>
                                                  </tr>`;
     });
   }
 
   if (localStorage.getItem('type') === 'news') {
-    let data = JSON.parse((localStorage.getItem('data') as string)) as Array<Article>;
+    const data = JSON.parse((localStorage.getItem('data') as string)) as Array<Article>;
     const content = document.querySelector('.content') as HTMLElement;
     content.innerHTML = '';
     content.innerHTML = `<table class="table">
